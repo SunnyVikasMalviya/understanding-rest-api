@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simple WebPage</title>
+    </head>
+    <body>
+        <h1>Users Data</h1>
+        <div id="users-data">
+
+        </div>
+        <script>
+            function fetchData() {
+                fetch('/api/users') // Our API endpoint
+                    .then(response => response.json()) // Parse the JSON response
+                    .then(data => {
+                        const usersDiv = document.getElementById('users-data');
+                        usersDiv.innerHTML = ''; // Clear previous data
+                        if (data && data.length > 0) {
+                            const ul = document.createElement('ul');
+                            data.forEach(users => {
+                                const li = document.createElement('li');
+                                li.textContent = 'ID: ${user.id}, Name: ${user.name}, Age: ${user.age}';
+                                ul.appendChild(li);
+                            });
+                        }
+                        else {
+                            usersDiv.textContent = 'No users found.';
+                        }
+                    })
+                    .catch(error => {
+                        const usersDiv = document.getElementById('users-data');
+                        usersDiv.textContent = 'Error fetching data: ${error}';
+                    });
+            }
+            // call fetchData when the page loads
+            window.onload = fetchData;
+        </script>
+    </body>
+</html>
