@@ -19,9 +19,10 @@
                             const ul = document.createElement('ul');
                             data.forEach(users => {
                                 const li = document.createElement('li');
-                                li.textContent = 'ID: ${user.id}, Name: ${user.name}, Age: ${user.age}';
+                                li.textContent = `ID: ${users.id}, Name: ${users.name}, Age: ${users.age}`;
                                 ul.appendChild(li);
                             });
+                            usersDiv.appendChild(ul);
                         }
                         else {
                             usersDiv.textContent = 'No users found.';

@@ -1,7 +1,7 @@
 import sqlite3
 
 # Connect to a database (it will be created if it doesn't exist)
-conn = sqlite3.connect('my_database.db')
+conn = sqlite3.connect('myRestDB.db')
 cursor = conn.cursor()
 
 # Create a table
@@ -28,4 +28,4 @@ conn.commit()
 # Close the connection
 conn.close()
 
-print("SQLite database 'my_database.db' created with 'users' table and sample data.")
+print("SQLite database 'myRestDB.db' created with 'users' table and sample data.")
